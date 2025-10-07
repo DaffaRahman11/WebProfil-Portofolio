@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Developer - Full Stack Portfolio</title>
+    <title>Under Maintenance - John Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -58,12 +58,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
         
-        .light .skill-card,
-        .light .project-card {
-            background: rgba(255, 255, 255, 0.8) !important;
-            border: 1px solid rgba(148, 163, 184, 0.15);
-        }
-        
         .light .text-gray-300 {
             color: #475569 !important;
         }
@@ -80,14 +74,6 @@
         /* Smooth transitions */
         * { transition: all 0.3s ease; }
         
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(45deg, #3b82f6, #10b981);
-            border-radius: 4px;
-        }
-        
         /* Glassmorphism effect */
         .glass {
             backdrop-filter: blur(10px);
@@ -100,70 +86,69 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
-        /* Carousel styles */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
+        /* Maintenance animations */
+        .maintenance-icon {
+            animation: bounce 2s infinite;
         }
         
-        .carousel-slide {
-            display: none;
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
         
-        .carousel-slide.active {
-            display: block;
+        .progress-bar {
+            animation: progress 3s ease-in-out infinite;
         }
         
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 0%; }
         }
         
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
         }
         
-        .carousel-dot.active {
-            background: white;
-            transform: scale(1.2);
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+            to {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.7);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
         }
     </style>
 </head>
-<body class="dark bg-gray-900 text-white">
+<body class="dark bg-gray-900 text-white min-h-screen">
     <!-- Animated Code Background -->
     <div class="code-bg" id="codeBg"></div>
     
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass bg-gray-900/80 dark:bg-gray-900/80 bg-white/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center items-center h-16 relative">
-                <div class="absolute left-0">
-                    <div class="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                        JD
-                    </div>
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
+                    JD
                 </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#home" class="nav-link hover:text-blue-400">Home</a>
-                    <a href="#skills" class="nav-link hover:text-blue-400">Skills</a>
-                    <a href="#education" class="nav-link hover:text-blue-400">Education</a>
-                    <a href="#experience" class="nav-link hover:text-blue-400">Experience</a>
-                    <a href="#organizations" class="nav-link hover:text-blue-400">Organizations</a>
-                    <a href="#projects" class="nav-link hover:text-blue-400">Projects</a>
-                </div>
-                <button id="themeToggle" class="absolute right-0 p-2 rounded-lg glass hover:bg-gray-700/50">
+                <button id="themeToggle" class="p-2 rounded-lg glass hover:bg-gray-700/50">
                     <i class="fas fa-moon text-blue-400" id="themeIcon"></i>
                 </button>
             </div>
@@ -171,340 +156,99 @@
     </nav>
 
     <!-- Main Content -->
-    <div id="mainContent">
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center pt-16">
-            <div class="text-center max-w-4xl mx-auto px-4">
-                <div class="mb-8">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gradient-to-r from-blue-400 to-purple-500 p-1">
-                        <div class="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-green-600 flex items-center justify-center text-4xl font-bold">
-                            JD
-                        </div>
+    <div class="min-h-screen flex items-center justify-center pt-16 px-4">
+        <div class="text-center max-w-4xl mx-auto">
+            <!-- Maintenance Icon -->
+            <div class="mb-12">
+                <div class="w-32 h-32 mx-auto mb-8 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full flex items-center justify-center pulse-glow floating">
+                    <i class="fas fa-tools text-6xl text-blue-400 maintenance-icon"></i>
+                </div>
+            </div>
+
+            <!-- Main Message -->
+            <div class="mb-12">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-green-500 to-teal-500 bg-clip-text text-transparent">
+                    Under Maintenance
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-400 mb-6 font-semibold">We're Making Things Better</p>
+                <p class="text-lg md:text-xl text-gray-300 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
+                    Our website is currently undergoing scheduled maintenance to improve your experience. 
+                    We'll be back online shortly with enhanced features and better performance.
+                </p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-12">
+                <div class="glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 max-w-md mx-auto">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm font-semibold text-gray-300 dark:text-gray-300">Progress</span>
+                        <span class="text-sm font-semibold text-blue-400">Updating...</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-green-500 to-teal-500 bg-clip-text text-transparent">
-                        John Developer
-                    </h1>
-                    <p class="text-xl md:text-2xl text-blue-400 mb-6 font-semibold">Fullstack Developer</p>
-                    <p class="text-lg md:text-xl text-gray-300 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
-                        Passionate full-stack developer crafting innovative web solutions with modern technologies. 
-                        Specialized in creating scalable applications that deliver exceptional user experiences.
-                    </p>
-                    
-                    <!-- Contact Icons -->
-                    <div class="flex justify-center space-x-6 mb-8">
-                        <a href="mailto:john.developer@email.com" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-blue-400 hover:text-blue-300">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-green-400 hover:text-green-300">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                        <a href="https://github.com/johndeveloper" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-gray-400 hover:text-gray-300">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/johndeveloper" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-blue-500 hover:text-blue-400">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
+                    <div class="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-blue-500 to-green-600 rounded-full"></div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Maintenance Details -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
+                    <div class="text-3xl mb-4 text-green-500">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Server Updates</h3>
+                    <p class="text-gray-400 text-sm">Upgrading infrastructure for better performance</p>
+                </div>
+                
+                <div class="glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
+                    <div class="text-3xl mb-4 text-blue-500">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Security Enhancements</h3>
+                    <p class="text-gray-400 text-sm">Implementing latest security protocols</p>
+                </div>
+                
+                <div class="glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
+                    <div class="text-3xl mb-4 text-purple-500">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">New Features</h3>
+                    <p class="text-gray-400 text-sm">Adding exciting new functionality</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 mb-12">
+                <h3 class="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
+                    Need Immediate Assistance?
+                </h3>
+                <p class="text-gray-300 dark:text-gray-300 mb-6">
+                    If you have urgent inquiries, feel free to reach out through any of these channels:
+                </p>
+                
+                <!-- Contact Icons -->
                 <div class="flex justify-center space-x-6">
-                    <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-green-600 rounded-lg hover:from-blue-600 hover:to-green-700 font-semibold hover-lift">
-                        View Projects
+                    <a href="mailto:john.developer@email.com" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-blue-400 hover:text-blue-300">
+                        <i class="fas fa-envelope text-xl"></i>
                     </a>
-                    <a href="#contact" class="px-8 py-3 border border-blue-400 rounded-lg hover:bg-blue-400 hover:text-gray-900 font-semibold hover-lift">
-                        Contact Me
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-green-400 hover:text-green-300">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://github.com/johndeveloper" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-gray-400 hover:text-gray-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/johndeveloper" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 glass bg-gray-800/30 dark:bg-gray-800/30 bg-white/20 rounded-full hover-lift text-blue-500 hover:text-blue-400">
+                        <i class="fab fa-linkedin text-xl"></i>
                     </a>
                 </div>
             </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                    Technical Skills
-                </h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-orange-500">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h3 class="font-semibold">React</h3>
-                    </div>
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-green-500">
-                            <i class="fab fa-node-js"></i>
-                        </div>
-                        <h3 class="font-semibold">Node.js</h3>
-                    </div>
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-blue-500">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <h3 class="font-semibold">Python</h3>
-                    </div>
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-yellow-500">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h3 class="font-semibold">JavaScript</h3>
-                    </div>
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-gray-400">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <h3 class="font-semibold">Git</h3>
-                    </div>
-                    <div class="skill-card glass p-6 rounded-xl text-center hover-lift bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                        <div class="text-4xl mb-4 text-blue-600">
-                            <i class="fab fa-docker"></i>
-                        </div>
-                        <h3 class="font-semibold">Docker</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                    Education
-                </h2>
-                <div class="relative">
-                    <!-- Timeline line -->
-                    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-green-500"></div>
-                    
-                    <!-- Education item -->
-                    <div class="relative flex items-start space-x-8 mb-12">
-                        <!-- Timeline dot -->
-                        <div class="relative z-10 w-16 h-16 bg-gradient-to-br from-blue-500 to-green-600 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
-                            MIT
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="flex-1 glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">Bachelor of Science in Computer Science</h3>
-                                    <p class="text-blue-400 font-semibold mb-2">Massachusetts Institute of Technology</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold">
-                                        2019 - 2023
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-graduation-cap text-blue-400 mr-3"></i>
-                                    GPA: 3.8/4.0 - Magna Cum Laude
-                                </p>
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-code text-purple-400 mr-3"></i>
-                                    Specialized in Software Engineering and Web Development
-                                </p>
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-trophy text-yellow-400 mr-3"></i>
-                                    Dean's List for 6 consecutive semesters
-                                </p>
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-users text-green-400 mr-3"></i>
-                                    President of Computer Science Student Association
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- High School Education -->
-                    <div class="relative flex items-start space-x-8">
-                        <!-- Timeline dot -->
-                        <div class="relative z-10 w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                            HS
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="flex-1 glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-2">High School Diploma</h3>
-                                    <p class="text-blue-400 font-semibold mb-2">Lincoln High School</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
-                                        2015 - 2019
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-star text-yellow-400 mr-3"></i>
-                                    Valedictorian - GPA: 4.0/4.0
-                                </p>
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-laptop-code text-blue-400 mr-3"></i>
-                                    AP Computer Science A - Score: 5/5
-                                </p>
-                                <p class="text-gray-300 dark:text-gray-300 flex items-center">
-                                    <i class="fas fa-medal text-orange-400 mr-3"></i>
-                                    National Merit Scholar
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                    Internship & Experience
-                </h2>
-                <div class="space-y-8">
-                    <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center text-xl font-bold">
-                                G
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold mb-2">Software Engineering Intern</h3>
-                                <p class="text-blue-400 font-semibold mb-2">Google</p>
-                                <p class="text-gray-300 dark:text-gray-300">Summer 2022 | Mountain View, CA</p>
-                                <p class="text-gray-400 mt-2">Developed scalable web applications using React and Node.js</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center text-xl font-bold">
-                                MS
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold mb-2">Full Stack Developer Intern</h3>
-                                <p class="text-blue-400 font-semibold mb-2">Microsoft</p>
-                                <p class="text-gray-300 dark:text-gray-300">Summer 2021 | Seattle, WA</p>
-                                <p class="text-gray-400 mt-2">Built cloud-based solutions using Azure and .NET technologies</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Organizations Section -->
-        <section id="organizations" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                    Organizations
-                </h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center text-xl font-bold">
-                                ACM
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Vice President</h3>
-                                <p class="text-blue-400 font-semibold mb-1">ACM Student Chapter</p>
-                                <p class="text-gray-300 dark:text-gray-300">2021 - 2023</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-xl font-bold">
-                                HC
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">Lead Developer</h3>
-                                <p class="text-blue-400 font-semibold mb-1">HackClub MIT</p>
-                                <p class="text-gray-300 dark:text-gray-300">2020 - 2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent">
-                    Featured Projects
-                </h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="project-card glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift cursor-pointer" onclick="openProject('ecommerce')">
-                        <div class="h-48 bg-gradient-to-br from-blue-500 to-green-600 rounded-lg mb-6 flex items-center justify-center text-white text-6xl">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">E-Commerce Platform</h3>
-                        <p class="text-gray-400 mb-4">Full-stack e-commerce solution with React, Node.js, and MongoDB</p>
-                        <div class="flex space-x-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">MongoDB</span>
-                        </div>
-                    </div>
-                    <div class="project-card glass p-6 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10 hover-lift cursor-pointer" onclick="openProject('taskmanager')">
-                        <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg mb-6 flex items-center justify-center text-white text-6xl">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Task Management App</h3>
-                        <p class="text-gray-400 mb-4">Collaborative task management with real-time updates and team features</p>
-                        <div class="flex space-x-2">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Vue.js</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Express</span>
-                            <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">Redis</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Project Detail Page -->
-    <div id="projectDetail" class="hidden">
-        <div class="pt-16">
-            <!-- Back Button -->
-            <div class="max-w-6xl mx-auto px-4 py-8">
-                <button onclick="closeProject()" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back to Portfolio</span>
-                </button>
-            </div>
-
-            <!-- Project Hero Carousel -->
-            <div class="max-w-6xl mx-auto px-4 mb-12">
-                <div class="carousel-container">
-                    <div id="projectCarousel">
-                        <!-- Carousel images will be inserted here -->
-                    </div>
-                    <div class="carousel-dots" id="carouselDots">
-                        <!-- Dots will be inserted here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Details -->
-            <div class="max-w-4xl mx-auto px-4 pb-20">
-                <div class="glass p-8 rounded-xl bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
-                    <h1 id="projectTitle" class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent"></h1>
-                    
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold mb-4">Project Description</h3>
-                        <p id="projectDescription" class="text-gray-300 dark:text-gray-300 leading-relaxed"></p>
-                    </div>
-
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold mb-4">Technical Specifications</h3>
-                        <ul id="projectSpecs" class="text-gray-300 dark:text-gray-300 space-y-2"></ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Technologies Used</h3>
-                        <div id="projectTech" class="flex flex-wrap gap-3"></div>
-                    </div>
+            <!-- Expected Return Time -->
+            <div class="text-center">
+                <p class="text-gray-400 mb-4">Expected to be back online:</p>
+                <div class="inline-flex items-center space-x-2 glass px-6 py-3 rounded-full bg-gray-800/30 dark:bg-gray-800/30 bg-white/10">
+                    <i class="fas fa-clock text-blue-400"></i>
+                    <span class="font-semibold text-blue-400" id="countdown">Soon</span>
                 </div>
             </div>
         </div>
@@ -532,16 +276,16 @@
 
         // Animated code background
         const codeLines = [
-            'const developer = { name: "John", skills: ["React", "Node.js", "Python"] };',
-            'function createAwesomeApp() { return "Amazing web experience"; }',
-            'import React from "react"; export default Portfolio;',
-            'const express = require("express"); app.listen(3000);',
-            'SELECT * FROM projects WHERE status = "completed";',
-            'git commit -m "Added new feature"; git push origin main;',
-            'docker build -t myapp .; docker run -p 3000:3000 myapp;',
-            'const api = await fetch("/api/data"); return api.json();',
-            'npm install react-router-dom; npm start;',
-            'python manage.py runserver; echo "Server running";'
+            'npm run build --production',
+            'docker-compose up -d --build',
+            'git pull origin main && npm install',
+            'systemctl restart nginx',
+            'pm2 restart all --update-env',
+            'npm run migrate:latest',
+            'redis-cli flushall',
+            'certbot renew --nginx',
+            'npm audit fix --force',
+            'yarn install --frozen-lockfile'
         ];
 
         function createCodeBackground() {
@@ -565,159 +309,35 @@
             }, 2000);
         }
 
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Project data
-        const projects = {
-            ecommerce: {
-                title: 'E-Commerce Platform',
-                description: 'A comprehensive e-commerce solution built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment processing, order management, and admin dashboard. The platform supports multiple payment methods, real-time inventory tracking, and responsive design for optimal mobile experience.',
-                specs: [
-                    'User authentication and authorization system',
-                    'Product catalog with search and filtering',
-                    'Shopping cart and checkout process',
-                    'Payment integration with Stripe',
-                    'Order tracking and management',
-                    'Admin dashboard for inventory management',
-                    'Responsive design for all devices',
-                    'Real-time notifications'
-                ],
-                tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'JWT'],
-                images: [
-                    { color: 'from-blue-500 to-green-600', icon: 'fas fa-shopping-cart' },
-                    { color: 'from-green-500 to-blue-500', icon: 'fas fa-credit-card' },
-                    { color: 'from-teal-500 to-emerald-500', icon: 'fas fa-chart-line' }
-                ]
-            },
-            taskmanager: {
-                title: 'Task Management App',
-                description: 'A collaborative task management application designed for teams and individuals. Features real-time collaboration, project organization, deadline tracking, file attachments, and comprehensive reporting. The app includes drag-and-drop functionality, customizable workflows, and integration with popular productivity tools.',
-                specs: [
-                    'Real-time collaboration with WebSocket',
-                    'Drag-and-drop task organization',
-                    'Project and team management',
-                    'Deadline tracking and notifications',
-                    'File attachment and sharing',
-                    'Custom workflow creation',
-                    'Reporting and analytics dashboard',
-                    'Mobile-first responsive design'
-                ],
-                tech: ['Vue.js', 'Express', 'Redis', 'Socket.io', 'PostgreSQL', 'AWS S3'],
-                images: [
-                    { color: 'from-green-500 to-teal-600', icon: 'fas fa-tasks' },
-                    { color: 'from-blue-500 to-indigo-600', icon: 'fas fa-users' },
-                    { color: 'from-orange-500 to-red-500', icon: 'fas fa-chart-bar' }
-                ]
-            }
-        };
-
-        // Project navigation
-        let currentSlide = 0;
-        let slideInterval;
-
-        function openProject(projectId) {
-            const project = projects[projectId];
-            if (!project) return;
-
-            document.getElementById('mainContent').classList.add('hidden');
-            document.getElementById('projectDetail').classList.remove('hidden');
-
-            // Update project details
-            document.getElementById('projectTitle').textContent = project.title;
-            document.getElementById('projectDescription').textContent = project.description;
-
-            // Update specs
-            const specsList = document.getElementById('projectSpecs');
-            specsList.innerHTML = '';
-            project.specs.forEach(spec => {
-                const li = document.createElement('li');
-                li.innerHTML = `<i class="fas fa-check text-green-400 mr-2"></i>${spec}`;
-                specsList.appendChild(li);
-            });
-
-            // Update tech stack
-            const techContainer = document.getElementById('projectTech');
-            techContainer.innerHTML = '';
-            project.tech.forEach(tech => {
-                const span = document.createElement('span');
-                span.className = 'px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full font-semibold';
-                span.textContent = tech;
-                techContainer.appendChild(span);
-            });
-
-            // Setup carousel
-            setupCarousel(project.images);
-        }
-
-        function closeProject() {
-            document.getElementById('projectDetail').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            if (slideInterval) {
-                clearInterval(slideInterval);
-            }
-        }
-
-        function setupCarousel(images) {
-            const carousel = document.getElementById('projectCarousel');
-            const dots = document.getElementById('carouselDots');
+        // Countdown timer (example: 2 hours from now)
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetTime = now + (2 * 60 * 60 * 1000); // 2 hours from now
             
-            carousel.innerHTML = '';
-            dots.innerHTML = '';
-            currentSlide = 0;
-
-            images.forEach((image, index) => {
-                // Create slide
-                const slide = document.createElement('div');
-                slide.className = `carousel-slide bg-gradient-to-br ${image.color} flex items-center justify-center text-white text-8xl ${index === 0 ? 'active' : ''}`;
-                slide.innerHTML = `<i class="${image.icon}"></i>`;
-                carousel.appendChild(slide);
-
-                // Create dot
-                const dot = document.createElement('div');
-                dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(index));
-                dots.appendChild(dot);
-            });
-
-            // Auto-advance slides
-            slideInterval = setInterval(() => {
-                nextSlide();
-            }, 4000);
-        }
-
-        function goToSlide(index) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            currentSlide = index;
-
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const nextIndex = (currentSlide + 1) % slides.length;
-            goToSlide(nextIndex);
+            setInterval(() => {
+                const currentTime = new Date().getTime();
+                const distance = targetTime - currentTime;
+                
+                if (distance > 0) {
+                    const hours = Math.floor(distance / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    
+                    document.getElementById('countdown').textContent = 
+                        `${hours}h ${minutes}m`;
+                } else {
+                    document.getElementById('countdown').textContent = 'Very Soon!';
+                }
+            }, 60000); // Update every minute
         }
 
         // Initialize
         createCodeBackground();
+        updateCountdown();
+
+        // Auto-refresh page every 5 minutes to check if maintenance is over
+        setTimeout(() => {
+            location.reload();
+        }, 5 * 60 * 1000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ad2d66c6c2ca88',t:'MTc1OTgzNzc4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ad33e170d1ca88',t:'MTc1OTgzODA1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
